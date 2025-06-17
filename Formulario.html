@@ -1,0 +1,36 @@
+<Html>
+<head>
+</head>
+<body bgcolor="#7565EF">
+<form action="#">
+    <p>Nombre <input type="text" required name="Nombre" size="30"></p>
+    <p>Apellido Paterno <input type="text" required name="ApellidoP"></p>
+    <p>Apellido Materno <input type="text" required name="ApellidoM"></p>
+    <p>Edad <input type="number" required name="Edad" min="18" max="60"></p>
+    <p>Sexo: <input type="radio" name="Sexo" value="h">Hombre <input type="radio" name="Sexo" value="m">Mujer</p>
+    <p>Deporte que practico <input list="Deporte"></p>
+    <datalist id="Deporte">
+        <option value="Basquetbol">
+        <option value="Futbol">
+        <option value="Voleibol">
+        <option value="Golf">
+        <option value="Tenis">
+        <option value="Nataci&oacute;n">
+        <option value="Box">
+    </datalist>
+    <p>Talla de playera <input list="Talla"></p>
+    <datalist id="Talla">
+        <option value="S">
+        <option value="M">
+        <option value="L">
+        <option value="XL">
+    </datalist>
+    <p>Numero de calzado <input type="number" required name="Calzado" step="0.1" min="4" max="9.5"></p>
+    <p>Talla de short <input type="number" required name="Short" min="20" max="40"></p>
+    <p><input type="submit" value="Enviar" /></p>
+    <p><input type="reset" value="Borrar" /></p>
+</form>
+</body>
+</html>
+
+

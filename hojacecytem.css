@@ -1,0 +1,68 @@
+body{
+	background-image: url("cecytem.png");
+	text-align: center;
+	margin: 0px;
+}
+div#cabecera{
+	clear: both;
+     width: *;
+     height: 10%;
+     border: 3px solid gray;
+     background: white;
+     position: sticky;
+     top: 0px;
+     text-align: center;
+     margin: 0px;
+}
+h1{
+	font-family: cursive;
+	font-style: italic;
+	color: blue;
+	text-align: center;
+	font-size: 70px;
+	text-decoration: underline;
+	text-shadow: 4px 4px black;
+}
+ul{
+	list-style: none;
+}
+.nav li a{
+	background-color: black;
+	color: white;
+	text-decoration: none;
+	padding: 5px 10px;
+	display: block;
+}
+.nav > li {
+	float: right;
+}
+.nav li a:hover{
+	background-color: #434343;
+}
+.nav li ul{
+	display: none;
+	position: absolute;
+	min-width: 200px;
+}
+.nav li:hover > ul{
+	display: block;
+}
+.nav{
+	text-align: left;
+}
+img{
+	margin: 5px;
+	float: left;
+}
+.et1{
+	text-decoration: underline;
+	font-size: 30px;
+	color: red;
+}
+.texto{
+	font-size: 20px;
+}
+.lista{
+	font-size: 20px;
+	text-decoration: underline;
+}

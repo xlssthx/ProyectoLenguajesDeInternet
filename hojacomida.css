@@ -1,0 +1,88 @@
+﻿table{
+	text-align: center; 
+	margin-left: auto; 	
+	margin-right: auto;  
+	border: 3px solid;
+	font-style:oblique;
+	color: gray;
+	font-size: 15px;
+	font-weight: bold;
+	font-variant: small-caps;
+	letter-spacing: -1px;
+	line-height: 2;
+}
+tr{
+	border: 3px solid;
+	font-variant: small-caps;
+	letter-spacing: 3px;
+}
+h1{
+	color: red;
+	text-align: center;
+	font-family: cursive;
+	font-style: italic;
+	text-decoration: underline;
+	text-shadow: 3px 3px orange;
+}
+body{
+	text-align: justify;
+	background-image: url("comidarapida.jpg");
+}
+.comida{
+	background-color: blue;
+	color: red;
+}
+.imagen{
+	background-color: green;
+	color: purple;  
+}
+.contenido{
+	justify-content: center;
+	font-style:italic;
+	text-decoration: underline;
+	color: 082E26;
+	display: flex;
+	flex-direction: row; 
+	flex-wrap: wrap;
+}
+.imgr{
+	float: right;
+}
+.imgl{
+	float: left;
+}
+div#cabecera {    
+     width: 99.5%;
+     height: 4%;
+     background-color:D06200;
+}
+div#pie {
+     clear: both;
+     width: 99.5%;
+     height: 4%;
+     background-color:D06200;
+    }
+.regresar{
+	position: sticky;
+	bottom: 5px;
+	font-size: 18px;
+	display: inline;
+}
+.logoimgr{
+	float:right;
+	position: sticky;
+	top: 5px;
+}
+.logoimgl{
+	float:left;
+	position: sticky;
+	top: 5px;
+}
+.return{
+	position: sticky;
+	bottom: 2px;
+	background-color: aqua;
+	color: black;
+	text-align: center;
+	font-size: 20px;
+}
