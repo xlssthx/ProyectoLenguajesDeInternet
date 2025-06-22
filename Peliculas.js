@@ -19,14 +19,18 @@ class Carousel {
             }
             
             const level = this.active - i;
-            this.createItem(this.items[index], level);
+            this.createItem(this.items[index], level, index);
         }
     }
 
-    createItem(content, level) {
+    createItem(content, level, index) {
         const item = document.createElement('div');
         item.className = `item level${level} noselect`;
-        item.innerHTML = `<img src="${content}" alt="Imagen ${content.split('.')[0]}">`;
+        item.innerHTML = `
+          <a href="${links[index]}" target="_blank">
+            <img src="${images[index]}" alt="Película ${index + 1}">
+          </a>
+        `;
         
         // Agregar evento click para seleccionar elemento
         item.addEventListener('click', () => {
@@ -213,3 +217,21 @@ window.carouselAPI = {
     getCurrentItem: () => carousel && carousel.getCurrentItem(),
     getCurrentIndex: () => carousel && carousel.getCurrentIndex()
 };
+
+const images = [
+  "p1.jpg", "p2.jpg", "p3.jpg", "p4.jpg", "p5.jpg",
+  "p6.jpg", "p7.jpg", "p8.jpg", "p9.jpg", "p10.jpg"
+];
+
+const links = [
+  "https://www.youtube.com/watch?v=3Y-IhY9adC4&t=3s",
+  "https://www.youtube.com/watch?v=xPnSbM9xZH0",
+  "https://www.youtube.com/watch?v=kRSasuf3JoU",
+  "https://www.youtube.com/watch?v=3kAyfsDhO8Q",
+  "https://www.youtube.com/watch?v=5G8Hpd0rk4g",
+  "https://www.youtube.com/watch?v=qhV7OmTZz8E",
+  "https://www.youtube.com/watch?v=FOH5hw0DPog",
+  "https://www.youtube.com/watch?v=wmmcPYp3fxc",
+  "https://www.youtube.com/watch?v=R0rnjTAsA0o",
+  "https://www.youtube.com/watch?v=q1hLWZzgZvU"
+];

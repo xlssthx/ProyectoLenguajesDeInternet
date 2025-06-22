@@ -114,6 +114,32 @@
 </style>
 <p class="return"><a href="cecytem.html">Regresar a la pagina principal</a></p>
 <script src="Peliculas.js"></script>
+<script>
+const images = [
+  "p1.jpg", "p2.jpg", "p3.jpg", "p4.jpg", "p5.jpg",
+  "p6.jpg", "p7.jpg", "p8.jpg", "p9.jpg", "p10.jpg"
+];
+
+const links = [
+  "https://www.youtube.com/watch?v=3Y-IhY9adC4&t=3s",
+  "https://www.youtube.com/watch?v=xPnSbM9xZH0",
+  "https://www.youtube.com/watch?v=kRSasuf3JoU",
+  "https://www.youtube.com/watch?v=3kAyfsDhO8Q",
+  "https://www.youtube.com/watch?v=5G8Hpd0rk4g",
+  "https://www.youtube.com/watch?v=qhV7OmTZz8E",
+  "https://www.youtube.com/watch?v=FOH5hw0DPog",
+  "https://www.youtube.com/watch?v=wmmcPYp3fxc",
+  "https://www.youtube.com/watch?v=R0rnjTAsA0o",
+  "https://www.youtube.com/watch?v=q1hLWZzgZvU"
+];
+
+// Al renderizar cada item del carrusel:
+itemDiv.innerHTML = `
+  <a href="${links[i]}" target="_blank">
+    <img src="${images[i]}" alt="Película ${i + 1}">
+  </a>
+`;
+</script>
 </head>
 </body>
 </html>
