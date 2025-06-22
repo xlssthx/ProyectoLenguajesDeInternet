@@ -26,29 +26,38 @@ class Carousel {
     createItem(content, level, index) {
         const item = document.createElement('div');
         item.className = `item level${level} noselect`;
-        item.innerHTML = `
-          <a href="${links[index]}" target="_blank">
-            <img src="${images[index]}" alt="Película ${index + 1}">
-          </a>
-        `;
-        
-        // Agregar evento click para seleccionar elemento
+
+        // Crea la imagen
+        const img = document.createElement('img');
+        img.src = images[index];
+        img.alt = `Película ${index + 1}`;
+        img.className = "carousel-img";
+        img.setAttribute('data-trailer', trailers[index]);
+
+
+        item.appendChild(img);        // Evento para abrir el modal al hacer click en la imagen
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const trailerUrl = this.getAttribute('data-trailer');
+            document.getElementById('trailer-frame').src = trailerUrl;
+            document.getElementById('trailer-modal').style.display = 'flex';
+        });        // Evento para abrir el modal al hacer click en la imagen
+
+        // Evento para mover el carrusel al hacer click en la tarjeta (pero NO en la imagen)
         item.addEventListener('click', () => {
             if (!this.isTransitioning && level !== 0) {
                 if (level > 0) {
-                    // Elemento está a la izquierda, mover hacia la derecha
                     for (let i = 0; i < level; i++) {
                         this.moveRight();
                     }
                 } else {
-                    // Elemento está a la derecha, mover hacia la izquierda
                     for (let i = 0; i < Math.abs(level); i++) {
                         this.moveLeft();
                     }
                 }
             }
         });
-        
+
         this.container.appendChild(item);
     }
 
@@ -137,6 +146,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mostrar información del elemento actual (opcional)
     console.log('Carrusel inicializado con elemento:', carousel.getCurrentItem());
+    
+    document.querySelector('.close-modal').onclick = function() {
+        document.getElementById('trailer-modal').style.display = 'none';
+        document.getElementById('trailer-frame').src = '';
+    };
+
+    document.getElementById('trailer-modal').onclick = function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+            document.getElementById('trailer-frame').src = '';
+        }
+    };
 });
 
 // Funciones globales para los botones
@@ -235,3 +256,31 @@ const links = [
   "https://www.youtube.com/watch?v=R0rnjTAsA0o",
   "https://www.youtube.com/watch?v=q1hLWZzgZvU"
 ];
+
+const trailers = [
+  "https://www.youtube.com/embed/KHFSeLUzbqk",
+  "https://www.youtube.com/embed/xPnSbM9xZH0",
+  "https://www.youtube.com/embed/kRSasuf3JoU",
+  "https://www.youtube.com/embed/3kAyfsDhO8Q",
+  "https://www.youtube.com/embed/fzQdnAzYg38",
+  "https://www.youtube.com/embed/qhV7OmTZz8E",
+  "https://www.youtube.com/embed/QbYoYUKt8hI",
+  "https://www.youtube.com/embed/wmmcPYp3fxc",
+  "https://www.youtube.com/embed/R0rnjTAsA0o",
+  "https://www.youtube.com/embed/q1hLWZzgZvU"
+];
+
+
+// Cerrar el modal al hacer clic en la X
+document.querySelector('.close-modal').onclick = function() {
+    document.getElementById('trailer-modal').style.display = 'none';
+    document.getElementById('trailer-frame').src = '';
+};
+
+// Cerrar el modal al hacer clic fuera del contenido
+document.getElementById('trailer-modal').onclick = function(e) {
+    if (e.target === this) {
+        this.style.display = 'none';
+        document.getElementById('trailer-frame').src = '';
+    }
+};
