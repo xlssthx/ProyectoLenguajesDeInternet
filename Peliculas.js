@@ -1,8 +1,8 @@
-class Carousel {
+class Carrusel {
     constructor(items, activeIndex = 0) {
         this.items = items;
         this.active = activeIndex;
-        this.container = document.querySelector('.carousel-items');
+        this.container = document.querySelector('.carrusel-items');
         this.isTransitioning = false;
         this.render();
     }
@@ -27,11 +27,10 @@ class Carousel {
         const item = document.createElement('div');
         item.className = `item level${level} noselect`;
 
-        // Crea la imagen
         const img = document.createElement('img');
         img.src = images[index];
         img.alt = `Película ${index + 1}`;
-        img.className = "carousel-img";
+        img.className = "carrusel-img";
         img.setAttribute('data-trailer', trailers[index]);
 
         item.appendChild(img);
@@ -44,7 +43,7 @@ class Carousel {
             document.getElementById('trailer-modal').style.display = 'flex';
         });
 
-        // Evento para mover el carrusel al hacer click en la tarjeta (pero NO en la imagen)
+        //mover el carrusel al hacer click en la tarjeta
         item.addEventListener('click', () => {
             if (!this.isTransitioning && level !== 0) {
                 if (level > 0) {
@@ -69,8 +68,7 @@ class Carousel {
         const newActive = this.active - 1;
         this.active = newActive < 0 ? this.items.length - 1 : newActive;
         this.render();
-        
-        // Resetear el flag después de la transición
+    
         setTimeout(() => {
             this.isTransitioning = false;
         }, 1000);
@@ -82,8 +80,7 @@ class Carousel {
         this.isTransitioning = true;
         this.active = (this.active + 1) % this.items.length;
         this.render();
-        
-        // Resetear el flag después de la transición
+
         setTimeout(() => {
             this.isTransitioning = false;
         }, 1000);
@@ -107,7 +104,7 @@ class Carousel {
         this.render();
     }
 
-    // Método para ir a un índice específico
+
     goToIndex(index) {
         if (index >= 0 && index < this.items.length && !this.isTransitioning) {
             this.active = index;
@@ -115,18 +112,15 @@ class Carousel {
         }
     }
 
-    // Método para obtener el elemento activo current
     getCurrentItem() {
         return this.items[this.active];
     }
 
-    // Método para obtener el índice activo current
     getCurrentIndex() {
         return this.active;
     }
 }
 
-// Configuración inicial
 const items = [
   "p1.jpg", "p2.jpg", "p3.jpg", "p4.jpg", "p5.jpg",
   "p6.jpg", "p7.jpg", "p8.jpg", "p9.jpg", "p10.jpg"
@@ -163,10 +157,10 @@ const trailers = [
   "https://www.youtube.com/embed/q1hLWZzgZvU"
 ];
 
-let carousel;
+let carrusel;
 let circleInterval = null;
 
-// FUNCIÓN PARA CREAR CÍRCULOS FLOTANTES (UNIFICADA)
+// Fondo
 function createFloatingCircle() {
     let sizeW = Math.random() * 22;
     let duration = Math.random() * 3;
@@ -225,8 +219,8 @@ function resumeCircles() {
 // Inicializar todo cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar carrusel
-    carousel = new Carousel(items, 0);
-    console.log('Carrusel inicializado con elemento:', carousel.getCurrentItem());
+    carrusel = new Carrusel(items, 0);
+    console.log('Carrusel inicializado con elemento:', carrusel.getCurrentItem());
     
     // Iniciar los círculos flotantes
     resumeCircles();
@@ -273,18 +267,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Funciones globales para los botones
+// Flechiyas
 function moveLeft() {
-    if (carousel) {
-        carousel.moveLeft();
-        console.log('Elemento actual:', carousel.getCurrentItem());
+    if (carrusel) {
+        carrusel.moveLeft();
+        console.log('Elemento actual:', carrusel.getCurrentItem());
     }
 }
 
 function moveRight() {
-    if (carousel) {
-        carousel.moveRight();
-        console.log('Elemento actual:', carousel.getCurrentItem());
+    if (carrusel) {
+        carrusel.moveRight();
+        console.log('Elemento actual:', carrusel.getCurrentItem());
     }
 }
 
@@ -311,10 +305,10 @@ document.addEventListener('keydown', function(e) {
 window.carouselAPI = {
     moveLeft: moveLeft,
     moveRight: moveRight,
-    goToIndex: (index) => carousel && carousel.goToIndex(index),
-    updateItems: (newItems) => carousel && carousel.updateItems(newItems),
-    getCurrentItem: () => carousel && carousel.getCurrentItem(),
-    getCurrentIndex: () => carousel && carousel.getCurrentIndex(),
+    goToIndex: (index) => carrusel && carrusel.goToIndex(index),
+    updateItems: (newItems) => carrusel && carrusel.updateItems(newItems),
+    getCurrentItem: () => carrusel && carrusel.getCurrentItem(),
+    getCurrentIndex: () => carrusel && carrusel.getCurrentIndex(),
     pauseCircles: pauseCircles,
     resumeCircles: resumeCircles
 };

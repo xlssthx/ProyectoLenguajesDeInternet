@@ -5,14 +5,12 @@ body {
     padding: 0;
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    /* Cambiar el fondo gradiente por el fondo oscuro para las burbujas */
     background: #001219;
-    /* Mantener el overflow-x para scroll horizontal si es necesario, pero permitir scroll vertical */
     overflow-x: hidden;
     position: relative;
 }
 
-/* Animación de círculos flotantes */
+/*Fondo*/
 .circle {
     position: fixed;
     bottom: 0;
@@ -81,7 +79,7 @@ body {
     text-shadow: 0 1px 2px #3a5a7a33;
 }
 
-#carousel {
+#carrusel {
     margin: 0 auto 30px auto;
     position: relative;
     width: 80vw;
@@ -94,7 +92,7 @@ body {
     gap: 0;
 }
 
-.arrow {
+.flecha {
     font-size: 2.2rem;
     color: #6a82fb;
     background: none;
@@ -112,19 +110,19 @@ body {
     z-index: 2;
     user-select: none;
 }
-.arrow:hover {
+.flecha:hover {
     color: #223046;
     background: none;
 }
 
-.carousel-items {
+.carrusel-items {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     min-height: 300px;
 }
 
-.item img, .carousel-img {
+.item img, .carrusel-img {
     border-radius: 18px;
     box-shadow: 0 4px 24px #3a5a7a33;
     border: 3px solid #b3b8d6;
@@ -134,13 +132,12 @@ body {
     height: 300px;
     object-fit: cover;
 }
-.item img:hover, .carousel-img:hover {
+.item img:hover, .carrusel-img:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 32px #6a82fb55;
     border-color: #6a82fb;
 }
 
-/* Efecto de profundidad en el carrusel */
 .item {
     transition: 
         transform 0.3s cubic-bezier(.4,2.08,.55,.44), 
@@ -152,22 +149,22 @@ body {
     margin : 0;
 }
 
-.item.level0 { /* Imagen central */
+.item.level0 { /* centro del carrusel */
     transform: scale(1.18);
     z-index: 5;
     opacity: 1;
 }
-.item.level1, .item.level-1 { /* Inmediatas a la central */
+.item.level1, .item.level-1 { /* a los lados */
     transform: scale(0.95);
     z-index: 4;
     opacity: 0.85;
 }
-.item.level2, .item.level-2 { /* Siguientes */
+.item.level2, .item.level-2 { /* siguientes */
     transform: scale(0.8);
     z-index: 3;
     opacity: 0.6;
 }
-.item.level3, .item.level-3 { /* Más lejanas */
+.item.level3, .item.level-3 { /* más lejanas */
     transform: scale(0.65);
     z-index: 2;
     opacity: 0.4;
@@ -256,12 +253,12 @@ a {
     background: #283e51;
 }
 
-.carousel-line {
-    width: 40px;           /* Ajusta este valor para la distancia */
+.carrusel-line {
+    width: 40px;         
     height: 4px;
     background: #fff;
     align-self: center;
     border-radius: 2px;
-    margin: 0 0;           /* Sin margen extra */
+    margin: 0 0;          
     z-index: 3;
 }

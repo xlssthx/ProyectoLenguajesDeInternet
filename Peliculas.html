@@ -2,24 +2,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peliculas</title>
     <link rel="stylesheet" type="text/css" href="hojapeliculas.css" />
 </head>
 <body>
-
     <h1 class="tittle">Peliculas</h1>
-
     <p class="descripcion">
         Aquí encontrarás una selección única de filmes con sus sinopsis y carteles.<br>
         ¡Explora y descubre algo nuevo! <br><br>
     </p>
-
-    <div id="carousel">
-        <div class="arrow arrow-left" onclick="moveLeft()">◄</div>
-        <div class="carousel-items"></div>
-        <div class="arrow arrow-right" onclick="moveRight()">►</div>
+    <div id="carrusel">
+        <div class="flecha flecha-izq" onclick="moveLeft()">◄</div>
+        <div class="carrusel-items"></div>
+        <div class="flecha flecha-der" onclick="moveRight()">►</div>
     </div>
-
     <br><br><br>
     <table>
         <tr>
