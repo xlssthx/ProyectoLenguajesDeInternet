@@ -1,31 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
-h1 {
-    text-align: center; 
-    color: #223046;
-    font-weight: 700;    
-    margin-bottom: 5px;
-    text-shadow: 2px 2px 8px #1a1c1d, 0 2px 8px #fff;   
-    font-family: "Rock Salt", cursive;
-    padding-bottom: 0;
-    font-size: 2.8em;
-    letter-spacing: 2px;
-}
-
 body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(120deg, #3a5a7a, #6d7fa3, #b3b8d6, #a18cd1, #6a82fb, #5f72bd, #283e51);
-    background-size: 400% 400%;
-    animation: gradientShift 12s ease-in-out infinite;
+    /* Cambiar el fondo gradiente por el fondo oscuro para las burbujas */
+    background: #001219;
+    /* Mantener el overflow-x para scroll horizontal si es necesario, pero permitir scroll vertical */
+    overflow-x: hidden;
+    position: relative;
 }
 
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* Animación de círculos flotantes */
+.circle {
+    position: fixed;
+    bottom: 0;
+    width: 20px;
+    aspect-ratio: 1/1;
+    background: #6a82fb;
+    box-shadow: 0 0 10px #6a82fb, 0 0 20px #6a82fb,
+                0 0 30px #6a82fb, 0 0 50px #6a82fb;
+    border-radius: 50%;
+    animation: floatUp 5s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 1;
+    }
+}
+
+.circle::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 25%;
+    width: 50%;
+    height: 100vh;
+    opacity: 0.3;
+    background: linear-gradient(#6a82fb, transparent);
 }
 
 .tittle, .title, h1 {
@@ -33,7 +57,7 @@ body {
     font-family: "Rock Salt", cursive;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #223046;
+    color: #9a9ca0;
     text-align: center;
     letter-spacing: 2px;
     text-shadow: 1px 2px 6px #b3b8d6;
@@ -81,7 +105,7 @@ body {
     align-items: center;
     justify-content: center;
     position: static;
-    margin: 0 32px;
+    margin: 0 20px;
     box-shadow: none;
     cursor: pointer;
     transition: color 0.2s;
@@ -97,7 +121,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    gap: 32px;
     min-height: 300px;
 }
 
@@ -126,6 +149,7 @@ body {
     position: relative;
     z-index: 1;
     opacity: 0.7;
+    margin : 0;
 }
 
 .item.level0 { /* Imagen central */
@@ -176,9 +200,9 @@ td, th {
 .return {
     position: sticky;
     bottom: 1px;
-    background-color: #6a82fb;
+    background-color: #d6d8e6;
     text-align: center;
-    color: #fff;
+    color: #1a0b0b;
     font-weight: bold;
     border-radius: 8px;
     margin: 24px auto 0 auto;
@@ -230,4 +254,14 @@ a {
     border-radius: 10px;
     border: none;
     background: #283e51;
+}
+
+.carousel-line {
+    width: 40px;           /* Ajusta este valor para la distancia */
+    height: 4px;
+    background: #fff;
+    align-self: center;
+    border-radius: 2px;
+    margin: 0 0;           /* Sin margen extra */
+    z-index: 3;
 }

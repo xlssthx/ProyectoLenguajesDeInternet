@@ -34,14 +34,15 @@ class Carousel {
         img.className = "carousel-img";
         img.setAttribute('data-trailer', trailers[index]);
 
-
-        item.appendChild(img);        // Evento para abrir el modal al hacer click en la imagen
+        item.appendChild(img);
+        
+        // Evento para abrir el modal al hacer click en la imagen
         img.addEventListener('click', function(e) {
             e.stopPropagation();
             const trailerUrl = this.getAttribute('data-trailer');
             document.getElementById('trailer-frame').src = trailerUrl;
             document.getElementById('trailer-modal').style.display = 'flex';
-        });        // Evento para abrir el modal al hacer click en la imagen
+        });
 
         // Evento para mover el carrusel al hacer click en la tarjeta (pero NO en la imagen)
         item.addEventListener('click', () => {
@@ -127,117 +128,9 @@ class Carousel {
 
 // Configuración inicial
 const items = [
-  "p1.jpg",
-  "p2.jpg",
-  "p3.jpg",
-  "p4.jpg",
-  "p5.jpg",
-  "p6.jpg",
-  "p7.jpg",
-  "p8.jpg",
-  "p9.jpg",
-  "p10.jpg"
+  "p1.jpg", "p2.jpg", "p3.jpg", "p4.jpg", "p5.jpg",
+  "p6.jpg", "p7.jpg", "p8.jpg", "p9.jpg", "p10.jpg"
 ];
-let carousel;
-
-// Inicializar el carrusel cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    carousel = new Carousel(items, 0);
-    
-    // Mostrar información del elemento actual (opcional)
-    console.log('Carrusel inicializado con elemento:', carousel.getCurrentItem());
-    
-    document.querySelector('.close-modal').onclick = function() {
-        document.getElementById('trailer-modal').style.display = 'none';
-        document.getElementById('trailer-frame').src = '';
-    };
-
-    document.getElementById('trailer-modal').onclick = function(e) {
-        if (e.target === this) {
-            this.style.display = 'none';
-            document.getElementById('trailer-frame').src = '';
-        }
-    };
-});
-
-// Funciones globales para los botones
-function moveLeft() {
-    if (carousel) {
-        carousel.moveLeft();
-        console.log('Elemento actual:', carousel.getCurrentItem());
-    }
-}
-
-function moveRight() {
-    if (carousel) {
-        carousel.moveRight();
-        console.log('Elemento actual:', carousel.getCurrentItem());
-    }
-}
-
-// Controles de teclado
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        moveLeft();
-    } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        moveRight();
-    } else if (e.key === 'Escape') {
-        // Parar autoplay si está activo
-        if (autoplayInterval) {
-            clearInterval(autoplayInterval);
-            autoplayInterval = null;
-            console.log('Autoplay detenido');
-        }
-    }
-});
-
-// Autoplay (descomenta para activar)
-let autoplayInterval = null;
-
-/*
-// Función para iniciar autoplay
-function startAutoplay(intervalTime = 3000) {
-    if (autoplayInterval) {
-        clearInterval(autoplayInterval);
-    }
-    
-    autoplayInterval = setInterval(() => {
-        moveRight();
-    }, intervalTime);
-    
-    console.log('Autoplay iniciado');
-}
-
-// Función para detener autoplay
-function stopAutoplay() {
-    if (autoplayInterval) {
-        clearInterval(autoplayInterval);
-        autoplayInterval = null;
-        console.log('Autoplay detenido');
-    }
-}
-
-// Pausar autoplay cuando el mouse está sobre el carrusel
-document.getElementById('carousel').addEventListener('mouseenter', stopAutoplay);
-document.getElementById('carousel').addEventListener('mouseleave', () => startAutoplay(3000));
-
-// Iniciar autoplay automáticamente
-setTimeout(() => {
-    startAutoplay(3000);
-}, 1000);
-*/
-
-// Funciones adicionales para uso externo
-window.carouselAPI = {
-    moveLeft: moveLeft,
-    moveRight: moveRight,
-    goToIndex: (index) => carousel && carousel.goToIndex(index),
-    updateItems: (newItems) => carousel && carousel.updateItems(newItems),
-    getCurrentItem: () => carousel && carousel.getCurrentItem(),
-    getCurrentIndex: () => carousel && carousel.getCurrentIndex()
-};
 
 const images = [
   "p1.jpg", "p2.jpg", "p3.jpg", "p4.jpg", "p5.jpg",
@@ -270,17 +163,158 @@ const trailers = [
   "https://www.youtube.com/embed/q1hLWZzgZvU"
 ];
 
+let carousel;
+let circleInterval = null;
 
-// Cerrar el modal al hacer clic en la X
-document.querySelector('.close-modal').onclick = function() {
-    document.getElementById('trailer-modal').style.display = 'none';
-    document.getElementById('trailer-frame').src = '';
-};
+// FUNCIÓN PARA CREAR CÍRCULOS FLOTANTES (UNIFICADA)
+function createFloatingCircle() {
+    let sizeW = Math.random() * 22;
+    let duration = Math.random() * 3;
+    let e = document.createElement("div");
+    e.setAttribute("class", "circle");
+    
+    // Establecer el tamaño del círculo
+    e.style.width = 12 + sizeW + "px";
+    e.style.height = 12 + sizeW + "px";
+    
+    // Posición horizontal aleatoria
+    e.style.left = Math.random() * window.innerWidth + "px";
+    
+    // Duración de la animación
+    e.style.animationDuration = 2 + duration + "s";
+    
+    // Colores aleatorios para variedad
+    const colors = ['#6a82fb', '#8000FF', '#5f72bd', '#a18cd1'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    e.style.background = randomColor;
+    e.style.boxShadow = `
+        0 0 10px ${randomColor}, 
+        0 0 20px ${randomColor},
+        0 0 30px ${randomColor}, 
+        0 0 50px ${randomColor}
+    `;
+    
+    // Agregar al body
+    document.body.appendChild(e);
+    
+    // Eliminar el elemento después de que termine la animación
+    setTimeout(function() {
+        if (document.body.contains(e)) {
+            document.body.removeChild(e);
+        }
+    }, (2 + duration) * 1000);
+}
 
-// Cerrar el modal al hacer clic fuera del contenido
-document.getElementById('trailer-modal').onclick = function(e) {
-    if (e.target === this) {
-        this.style.display = 'none';
-        document.getElementById('trailer-frame').src = '';
+// Función para pausar las burbujas
+function pauseCircles() {
+    if (circleInterval) {
+        clearInterval(circleInterval);
+        circleInterval = null;
     }
+}
+
+// Función para reanudar las burbujas
+function resumeCircles() {
+    if (!circleInterval) {
+        circleInterval = setInterval(function() {
+            createFloatingCircle();
+        }, 200);
+    }
+}
+
+// Inicializar todo cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar carrusel
+    carousel = new Carousel(items, 0);
+    console.log('Carrusel inicializado con elemento:', carousel.getCurrentItem());
+    
+    // Iniciar los círculos flotantes
+    resumeCircles();
+    
+    // Configurar eventos del modal
+    const modal = document.getElementById('trailer-modal');
+    const closeModal = document.querySelector('.close-modal');
+    const trailerFrame = document.getElementById('trailer-frame');
+    
+    // Cerrar modal con X
+    if (closeModal) {
+        closeModal.onclick = function() {
+            modal.style.display = 'none';
+            trailerFrame.src = '';
+            resumeCircles();
+        };
+    }
+    
+    // Cerrar modal clicando fuera
+    modal.onclick = function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+            trailerFrame.src = '';
+            resumeCircles();
+        }
+    };
+    
+    // Observer para pausar/reanudar círculos cuando se abre/cierra el modal
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                if (modal.style.display === 'flex') {
+                    pauseCircles();
+                } else if (modal.style.display === 'none' || modal.style.display === '') {
+                    resumeCircles();
+                }
+            }
+        });
+    });
+
+    observer.observe(modal, {
+        attributes: true,
+        attributeFilter: ['style']
+    });
+});
+
+// Funciones globales para los botones
+function moveLeft() {
+    if (carousel) {
+        carousel.moveLeft();
+        console.log('Elemento actual:', carousel.getCurrentItem());
+    }
+}
+
+function moveRight() {
+    if (carousel) {
+        carousel.moveRight();
+        console.log('Elemento actual:', carousel.getCurrentItem());
+    }
+}
+
+// Controles de teclado
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        moveLeft();
+    } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        moveRight();
+    } else if (e.key === 'Escape') {
+        // Cerrar modal si está abierto
+        const modal = document.getElementById('trailer-modal');
+        if (modal && modal.style.display === 'flex') {
+            modal.style.display = 'none';
+            document.getElementById('trailer-frame').src = '';
+            resumeCircles();
+        }
+    }
+});
+
+// API pública del carrusel
+window.carouselAPI = {
+    moveLeft: moveLeft,
+    moveRight: moveRight,
+    goToIndex: (index) => carousel && carousel.goToIndex(index),
+    updateItems: (newItems) => carousel && carousel.updateItems(newItems),
+    getCurrentItem: () => carousel && carousel.getCurrentItem(),
+    getCurrentIndex: () => carousel && carousel.getCurrentIndex(),
+    pauseCircles: pauseCircles,
+    resumeCircles: resumeCircles
 };
