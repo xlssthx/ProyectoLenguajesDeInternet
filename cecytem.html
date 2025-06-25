@@ -1,46 +1,80 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>HTML</title>
-	<link rel="icon" type="image/jpeg" href="cecytem2.jpeg" />
 	<link rel="stylesheet" type="text/css" href="hojacecytem.css">
 </head>
 <body>
-	<div id="cabecera">
-		<h1>~~~~Desarrolla Aplicaciones Web~~~~</h1>
-			<ul class="nav">
-				<li><a href="">Mas información de:</a>
-					<ul>
-						<li><a href="http://www.hipertexto.info/documentos/html.htm">HTML</a></li>
-						<li><a href="https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=707:ies-css-un-lenguaje-de-programacion-ipara-que-sirve-diferencias-entre-html-css-php-asp-cu01004d&catid=75&Itemid=203">CSS</a></li>
-						<li><a href="https://www.ecured.cu/JavaScript">JavaScript</a></li>
-					</ul>
-				</li>
-				<li><a href="">Nuestros Proyectos de paginas web:</a>
-					<ul>
-						<li><a href="SportsFit.html">SportsFit</a></li>
-						<li><a href="Peliculas.html">PeliCine</a></li>
-						<li><a href="Comidarapida.html">FastFood</a></li>
-						<li><a href="CartoonsV2.html">CartoonsView</a></li>
-					</ul>
-				</li>
-			</ul>
-	</div>
-	<img src="html.png" width="200px" height="200px">
-	<br><p><h3>Lenguaje de Programación</h3></p><p class="et1">HTML</p>
-	<p class="texto">HTML es un lenguaje de marcado que se utiliza para el desarrollo de páginas de Internet. Se trata de la sigla que corresponde a <b>HyperText Markup Language</b>, es decir, Lenguaje de Marcas de Hipertexto, que podría ser traducido como Lenguaje de Formato de Documentos para Hipertexto. <br><br>Es un lenguaje muy simple y general que sirve para definir otros lenguajes que tienen que ver con el formato de los documentos. El texto en él se crea a partir de etiquetas, también llamadas tags, que permiten interconectar diversos conceptos y formatos. <br><br>Por otra parte, cabe destacar que el HTML permite ciertos códigos que se conocen como scripts, los cuales brindan instrucciones específicas a los navegadores que se encargan de procesar el lenguaje. Entre los scripts que pueden agregarse, los más conocidos y utilizados son JavaScript y PHP.
-	</p>
-	<img src="JavaScript.png" width="300px" height="200px">
-	<p class="et1">JavaScript</p>
-	<p class="texto">JavaScript es un lenguaje de programación interpretado, dialecto del estándar ECMAScript. Se define como orientado a objetos, basado en prototipos, imperativo, débilmente tipado y dinámico.<br><br>Sus caracteristicas son: <br><br>
-		<ul class="lista">
-			<li>~~Es simple, no hace falta tener conocimientos avanzados de programación para poder hacer un programa en JavaScript.</li>
-			<li>~~Maneja objetos dentro de nuestra página Web y sobre ese objeto podemos definir diferentes eventos. Dichos objetos facilitan la programacion de paginas interactivas, a la vez que se evita la posibilidad de ejecutar comandos que puedan ser peligrosos para la maquina del usuario, tales como formateo de unidades, modificar archivos etc.</li>
-			<li>~~Es dinámico, responde a eventos en tiempo real. Eventos como presionar un botón, pasar el puntero del mouse sobre un determinado texto o el simple hecho de cargar la página o caducar un tiempo. Con esto podemos cambiar totalmente el aspecto de nuestra página al gusto del usuario, evitándonos tener en el servidor un página para cada gusto, hacer calculos en base a variables cuyo valor es determinado por el usuario, etc.</li>
-		</ul>
-	</p>
-	<img src="Css.png" width="200" height="200">
-	<p class="et1">CSS</p>
-	<p class="texto">Es un lenguaje que sirve para dotar de presentación y aspecto, de “estilo”, a páginas web (documentos HTML). CSS no es un lenguaje de programación. Podríamos decir que es un lenguaje que suele aparecer relacionado o próximo a un lenguaje de programación o que suele colaborar con un lenguaje de programación, pero no es un lenguaje de programación propiamente dicho.<br><br>HTML y CSS son tecnologías (o metalenguajes, ya que no puede considerárselos lenguajes de programación) que intervienen en prácticamente todo desarrollo, grande o pequeño. Se encargan de dotar de una estructura y presentación agradables a aquello que ve el usuario de páginas web.<br><br>En resumen, CSS es un lenguaje para dotar de presentación y estilo a páginas web cuyos aspectos básicos deben ser conocidos tanto por programadores web como por diseñadores web o maquetadores web. En la práctica, muchas veces se entremezcla el código de programación con el código HTML y código CSS, de ahí que coloquialmente se hable de “programación web” para referirse a todo este conjunto, aunque formalmente ni HTML ni CSS son lenguajes de programación.
+	<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Desarrolla Aplicaciones Web</h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#">Más información de: </a>
+                            <ul>
+                                <li><a href="http://www.hipertexto.info/documentos/html.htm">HTML</a></li>
+                                <li><a href="https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=707:ies-css-un-lenguaje-de-programacion-ipara-que-sirve-diferencias-entre-html-css-php-asp-cu01004d&catid=75&Itemid=203">CSS</a></li>
+                                <li><a href="https://www.ecured.cu/JavaScript">JavaScript</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Nuestros proyectos de páginas web: </a>
+                            <ul>
+                                <li><a href="SportsFit.html">SportsFit</a></li>
+                                <li><a href="Peliculas.html">PeliCine</a></li>
+                                <li><a href="Comidarapida.html">FastFood</a></li>
+                                <li><a href="CartoonsV2.html">CartoonsView</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-card">
+                <div class="tech-section" data-line="01">
+                    <div class="tech-icon html-icon">&lt;/&gt;</div>
+                    <div class="tech-content">
+                        <h2>Lenguaje de programacion HTML (HyperText Markup Language)</h2>
+                        <p>HTML es un lenguaje de marcado que se utiliza para el desarrollo de páginas de Internet. Se trata de la sigla que corresponde a <strong>HyperText Markup Language</strong>, es decir, Lenguaje de Marcas de Hipertexto.</p>
+                        <p>Es un lenguaje muy simple y general que sirve para definir otros lenguajes que tienen que ver con el formato de los documentos. El texto se crea a partir de etiquetas que permiten interconectar diversos conceptos y formatos.</p>
+						<p>Por otra parte, cabe destacar que el HTML permite ciertos códigos que se conocen como scripts, los cuales brindan instrucciones específicas a los navegadores que se encargan de procesar el lenguaje. Entre los scripts que pueden agregarse, los más conocidos y utilizados son JavaScript y PHP.</p>
+					</div>
+                </div>
+
+                <div class="tech-section" data-line="02">
+                    <div class="tech-icon js-icon">{ }</div>
+                    <div class="tech-content">
+                        <h2>JavaScript</h2>
+                        <p>JavaScript es un lenguaje de programación interpretado, dialecto del estándar ECMAScript. Se define como orientado a objetos, basado en prototipos, imperativo, débilmente tipado y dinámico.</p>
+                        <p>Sus caracteristicas son: </p>
+						<ul class="tech-features">
+                            <li>Es simple, no hace falta tener conocimientos avanzados de programación para poder hacer un programa en JavaScript.</li>
+                            <li>Maneja objetos dentro de nuestra página Web y sobre ese objeto podemos definir diferentes eventos, facilitando la programación de páginas interactivas.</li>
+                            <li>Es dinámico, responde a eventos en tiempo real como presionar un botón, pasar el puntero del mouse o cargar la página.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tech-section" data-line="03">
+                    <div class="tech-icon css-icon"># { }</div>
+                    <div class="tech-content">
+                        <h2>CSS (Cascading Style Sheets)</h2>
+                        <p>Es un lenguaje que sirve para dotar de presentación y aspecto, de "estilo", a páginas web (documentos HTML). CSS no es un lenguaje de programación, pero suele colaborar estrechamente con lenguajes de programación.</p>
+                        <p>HTML y CSS son tecnologías que intervienen en prácticamente todo desarrollo web. Se encargan de dotar de una estructura y presentación agradables a aquello que ve el usuario en las páginas web.</p>
+						<p>En resumen, CSS es un lenguaje para dotar de presentación y estilo a páginas web cuyos aspectos básicos deben ser conocidos tanto por programadores web como por diseñadores web o maquetadores web. En la práctica, muchas veces se entremezcla el código de programación con el código HTML y código CSS, de ahí que coloquialmente se hable de “programación web” para referirse a todo este conjunto, aunque formalmente ni HTML ni CSS son lenguajes de programación.</p>
+					</div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
